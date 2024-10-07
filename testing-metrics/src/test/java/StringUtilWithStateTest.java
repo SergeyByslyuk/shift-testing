@@ -3,6 +3,7 @@ import org.kpe.StringUtilsWithState;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
+//code coverage показывает 100%, но не проверяет измененное состояние объекта
 public class StringUtilWithStateTest {
 
     @Test
