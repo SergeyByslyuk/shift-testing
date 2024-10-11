@@ -4,7 +4,7 @@ import org.kpe.Order;
 import org.kpe.OrderService;
 import org.kpe.Product;
 import org.kpe.User;
-import org.kpe.UserRepoImpl;
+import org.kpe.UserRepo;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -17,7 +17,7 @@ import static org.mockito.Mockito.verifyNoMoreInteractions;
 public class OrderServiceTest {
 
     @Mock
-    UserRepoImpl userRepo;
+    UserRepo userRepo;
 
 //    @Test
 //    public void createSucceedOrder() {
