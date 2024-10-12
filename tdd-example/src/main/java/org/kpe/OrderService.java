@@ -11,11 +11,15 @@ public class OrderService {
     public void createOrder(Order order, User user) {
         OrderValidator validator = new OrderValidator();
         if (validator.isValidOrder(order)) {
-            if (userHasEnoughMoney(order, user.getMoney())) {
-                userService.chargeMoney(user, order);
-            }
+            handleUserMoney(order, user);
         } else {
-            throw new RuntimeException();
+            throw new IllegalArgumentException("Order is invalid");
+        }
+    }
+
+    private void handleUserMoney(Order order, User user) {
+        if (userHasEnoughMoney(order, user.getMoney())) {
+            userService.chargeMoney(user, order);
         }
     }
 

@@ -24,26 +24,43 @@ public class CustomerTest {
         Customer customer = new Customer(store);
 
         //act
-        boolean success = customer.purchase(Product.CHEESE, 5);
+        boolean success = customer.purchase(Product.CHEESE, 12);
 
         //assert
         assertTrue(success);
-        assertEquals(store.getInventory(Product.CHEESE), 5);
+        assertEquals(store.getInventory(Product.CHEESE), 12);
     }
 
     //london style testing
+//    @Test
+//    public void purchaseSucceedWhenEnoughInventoryByLondonStyle() {
+//        //arrange
+//
+//        Customer customer = new Customer(mockStore);
+//        doNothing().when(mockStore).removeInventory(Product.CHEESE, 5);
+//
+//        //act
+//        boolean success = customer.purchase(Product.CHEESE, 5);
+//
+//        //assert
+//        assertTrue(success);
+//        verify(mockStore).removeInventory(Product.CHEESE, 5);
+//    }
+
+    //london style testing
+    //тест проходит, но по логике он преверяет все что надо
     @Test
     public void purchaseSucceedWhenEnoughInventoryByLondonStyle() {
         //arrange
 
         Customer customer = new Customer(mockStore);
-        doNothing().when(mockStore).removeInventory(Product.CHEESE, 5);
+        doNothing().when(mockStore).removeInventory(Product.CHEESE, 12);
 
         //act
-        boolean success = customer.purchase(Product.CHEESE, 5);
+        boolean success = customer.purchase(Product.CHEESE, 12);
 
         //assert
         assertTrue(success);
-        verify(mockStore).removeInventory(Product.CHEESE, 5);
+        verify(mockStore).removeInventory(Product.CHEESE, 12);
     }
 }

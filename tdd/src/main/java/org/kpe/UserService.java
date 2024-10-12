@@ -9,7 +9,8 @@ public class UserService {
     }
 
     public void chargeMoney(User user, Order order) {
-        int money = user.getMoney() - (order.count() * order.product().getPrice());
-        userRepo.updateMoney(money);
+
+        int updateMoney = user.getMoney() - (order.product().getPrice() * order.count());
+        userRepo.updateMoney(updateMoney);
     }
 }

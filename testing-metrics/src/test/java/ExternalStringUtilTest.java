@@ -9,7 +9,7 @@ public class ExternalStringUtilTest {
 
     @Test
     public void successParseInt() {
-        int result = ExternalStringUtil.isStringLong("123");
+        long result = ExternalStringUtil.parseLong("123");
 
         assertEquals(result, 123);
     }

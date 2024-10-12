@@ -3,7 +3,7 @@ package org.kpe;
 public enum Product {
 
     TOMATO(3),
-    POTATO(5);
+    POTATO( 5);
 
     private final int price;
     Product(int price) {
@@ -13,4 +13,5 @@ public enum Product {
     public int getPrice() {
         return price;
     }
+
 }

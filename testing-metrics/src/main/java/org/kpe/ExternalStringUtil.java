@@ -2,7 +2,7 @@ package org.kpe;
 
 public class ExternalStringUtil {
 
-    public static int isStringLong(String input) {
+    public static long parseLong(String input) {
         return Integer.parseInt(input);
     }
 }

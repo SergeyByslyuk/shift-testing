@@ -1,6 +1,5 @@
 package org.kpe;
 
 public interface UserRepo {
-
-    void updateMoney(int money);
+    void updateMoney(int updateMoney);
 }
