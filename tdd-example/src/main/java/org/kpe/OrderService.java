@@ -2,17 +2,17 @@ package org.kpe;
 
 public class OrderService {
 
-    UserRepo userRepo;
+    UserService userService;
 
-    public OrderService(UserRepo userRepo) {
-        this.userRepo = userRepo;
+    public OrderService(UserService userService) {
+        this.userService = userService;
     }
 
     public void createOrder(Order order, User user) {
         OrderValidator validator = new OrderValidator();
         if (validator.isValidOrder(order)) {
             if (userHasEnoughMoney(order, user.getMoney())) {
-                new UserService(userRepo).chargeMoney(user, order);
+                userService.chargeMoney(user, order);
             }
         } else {
             throw new RuntimeException();

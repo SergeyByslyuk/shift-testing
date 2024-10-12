@@ -5,7 +5,6 @@ import org.kpe.OrderService;
 import org.kpe.Product;
 import org.kpe.User;
 import org.kpe.UserRepo;
-import org.kpe.UserService;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
@@ -20,37 +19,20 @@ public class OrderServiceTest {
     @Mock
     UserRepo userRepo;
 
-//    @Test
-//    public void createSucceedOrder() {
-//
-//        OrderService orderService = new OrderService(userRepo);
-//        Order order = new Order(Product.TOMATO, 5);
-//        User user = new User(1, 20);
-//
-//        orderService.createOrder(order, user);
-//
-//        assertTrue(expectedStatus);
-//    }
-
     @Test
     public void refuseOrderIfUserHasNotEnoughMoney() {
-        UserService userService = new UserService(userRepo);
-        OrderService orderService = new OrderService(userService);
-
+        OrderService orderService = new OrderService(userRepo);
         Order order = new Order(Product.POTATO, 5);
         User user = new User(1, 20);
 
         orderService.createOrder(order, user);
 
         verifyNoMoreInteractions(userRepo);
-
     }
 
     @Test
-    public void throwExceptionIfOrderIsInvalid() {
-        UserService userService = new UserService(userRepo);
-        OrderService orderService = new OrderService(userService);
-
+    public void throwExceptionIfOrderInvalid() {
+        OrderService orderService = new OrderService(userRepo);
         Order order = new Order(Product.POTATO, -5);
         User user = new User(1, 20);
 
@@ -59,18 +41,13 @@ public class OrderServiceTest {
 
     @Test
     public void moneyIsChargedIfOrderSuccess() {
-        UserService userService = new UserService(userRepo);
-        OrderService orderService = new OrderService(userService);
-
-        Order order = new Order(Product.TOMATO, 5);
+        OrderService orderService = new OrderService(userRepo);
+        Order order = new Order(Product.POTATO, 3);
         User user = new User(1, 20);
         doNothing().when(userRepo).updateMoney(5);
 
         orderService.createOrder(order, user);
 
         verify(userRepo).updateMoney(5);
-//        assertEquals(5, user.getMoney());
     }
-
-
 }
